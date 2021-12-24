@@ -14,7 +14,7 @@ const Search = (props: Props) => {
         placeholder={props.placeholder}
         onChange={props.onChange}
       />
-      <i className='fas fa-search' />
+      <i className={`fas fa-search ${style['search-icon']}`} />
     </div>
   )
 }

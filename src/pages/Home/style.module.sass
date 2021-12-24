@@ -1,0 +1,23 @@
+
+.root
+	padding: 10px
+
+.header
+	display: flex
+	align-items: center
+	justify-content: space-between
+
+	.covid-logo
+		display: flex
+		align-items: center
+		img
+			width: clamp(50px,100% ,150px)
+			display: none
+		h1
+			display: none
+			font-family: "Roboto"
+			text-transform: uppercase
+
+@media (min-width:400px)
+	.root
+		padding: 60px
