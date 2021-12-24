@@ -14,7 +14,7 @@ const HomePage = (props: Props) => {
             src={CovidLogo}
             alt='COVID logo'
           />
-          <h1 className={style['covid-title']}>Statistics</h1>
+          <h1 className={style['covid-title']}>Statistic</h1>
         </div>
         <Search placeholder='Search...' />
       </header>
