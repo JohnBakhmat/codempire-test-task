@@ -7,17 +7,20 @@
 	align-items: center
 	justify-content: space-between
 
-	.covid-logo
+	.covid-group
 		display: flex
 		align-items: center
-		img
+		.covid-logo
 			width: clamp(50px,100% ,150px)
 			display: none
-		h1
+		.covid-title
 			display: none
 			font-family: "Roboto"
 			text-transform: uppercase
 
-@media (min-width:400px)
+@media (min-width:500px)
 	.root
 		padding: 60px
+		.covid-group
+			.covid-logo
+				display: block

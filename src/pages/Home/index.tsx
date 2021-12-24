@@ -8,9 +8,13 @@ const HomePage = (props: Props) => {
   return (
     <div className={style['root']}>
       <header className={style['header']}>
-        <div className={style['covid-logo']}>
-          <img src={CovidLogo} alt='COVID logo' />
-          <h1>Statistics</h1>
+        <div className={style['covid-group']}>
+          <img
+            className={style['covid-logo']}
+            src={CovidLogo}
+            alt='COVID logo'
+          />
+          <h1 className={style['covid-title']}>Statistics</h1>
         </div>
         <Search placeholder='Search...' />
       </header>
