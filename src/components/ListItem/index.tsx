@@ -8,7 +8,13 @@ interface Props {
 const ListItem = ({ data, isHeader }: Props) => {
   return (
     <tr className={style['table-row']}>
-      {data.map((item) => (isHeader ? <th>{item}</th> : <td>{item}</td>))}
+      {data.map((item) =>
+        isHeader ? (
+          <th key={item.toString()}>{item}</th>
+        ) : (
+          <td key={item.toString()}> {item}</td>
+        )
+      )}
     </tr>
   )
 }
