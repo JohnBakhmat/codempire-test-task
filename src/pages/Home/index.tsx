@@ -1,6 +1,7 @@
 import React from 'react'
 import CovidLogo from '../../assets/logo.png'
 import Search from '../../components/Search'
+import Table from '../../components/Table'
 import style from './style.module.sass'
 interface Props {}
 
@@ -18,6 +19,9 @@ const HomePage = (props: Props) => {
         </div>
         <Search placeholder='Search...' />
       </header>
+      <div>
+        <Table />
+      </div>
     </div>
   )
 }
