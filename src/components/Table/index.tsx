@@ -1,23 +1,16 @@
 import React from 'react'
+import ListItem from '../ListItem'
 import style from './style.module.sass'
 interface Props {}
 
 const Table = (props: Props) => {
   return (
-    <table className={style['table']}>
+    <table className={style['table']} cellSpacing={50}>
       <thead>
-        <tr>
-          <th>№</th>
-          <th>Country</th>
-          <th>Total Confirmed</th>
-        </tr>
+        <ListItem isHeader data={['№', 'Country', 'Total Confirmed']} />
       </thead>
       <tbody>
-        <tr>
-          <td>1</td>
-          <td>Albania</td>
-          <td>6625</td>
-        </tr>
+        <ListItem data={[1, 2, 3]} />
       </tbody>
     </table>
   )
