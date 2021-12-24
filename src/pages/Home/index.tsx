@@ -1,11 +1,31 @@
-import React from 'react'
+import React, { useEffect, useReducer, useState } from 'react'
 import CovidLogo from '../../assets/logo.png'
 import Search from '../../components/Search'
 import Table from '../../components/Table'
+import Country from '../../models/Country'
+import { getSummary } from '../../services/api'
 import style from './style.module.sass'
 interface Props {}
 
 const HomePage = (props: Props) => {
+  //TODO: useReducer is better for large data
+  const [summary, setSummary] = useState<Array<Country>>([])
+  const tableColumns = ['№', 'Country', 'Total Confirmed']
+  useEffect(() => {
+    getSummary((countries: Array<Object>) => {
+      setSummary(
+        countries.map((country: any) => {
+          return new Country(
+            country.Country,
+            country.TotalConfirmed,
+            country.TotalDeaths,
+            country.TotalRecovered
+          )
+        })
+      )
+    })
+  }, [])
+
   return (
     <div className={style['root']}>
       <header className={style['header']}>
@@ -20,7 +40,7 @@ const HomePage = (props: Props) => {
         <Search placeholder='Search...' />
       </header>
       <div>
-        <Table />
+        <Table columns={tableColumns} rows={summary} />
       </div>
     </div>
   )
