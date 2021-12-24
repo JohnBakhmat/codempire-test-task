@@ -25,7 +25,10 @@ const HomePage = (props: Props) => {
       )
     })
   }, [])
-
+  const tableColumns = ['№', 'Country', 'Total Confirmed']
+  const handleSearchChange = (event: ChangeEvent<HTMLInputElement>) => {
+    const { value } = event.target
+  }
   return (
     <div className={style['root']}>
       <header className={style['header']}>
@@ -37,7 +40,7 @@ const HomePage = (props: Props) => {
           />
           <h1 className={style['covid-title']}>Statistic</h1>
         </div>
-        <Search placeholder='Search...' />
+        <Search placeholder='Search...' onChange={handleSearchChange} />
       </header>
       <div>
         <Table columns={tableColumns} rows={summary} />
