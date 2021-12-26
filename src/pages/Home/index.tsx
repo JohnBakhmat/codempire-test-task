@@ -7,6 +7,14 @@ import { getSummary } from '../../services/api'
 import style from './style.module.sass'
 import * as _ from 'lodash'
 import Modal from '../../components/Modal'
+import { useDispatch, useSelector } from 'react-redux'
+import {
+  changeModalShown,
+  selectData,
+  selectIsShow,
+} from '../../store/modalStore'
+import { AppDispatch, useAppDispatch, useAppSelector } from '../../store'
+import CountryInspect from '../../components/CountryInspect'
 interface Props {}
 type CountryEnumerable = Array<Country>
 enum SumaryActionType {
@@ -25,7 +33,13 @@ class SumaryAction {
 }
 
 const HomePage: FC<Props> = (props) => {
-  const [isModalOpen, setModalOpen] = useState(false)
+  const isModalOpen = useAppSelector(selectIsShow)
+  const modalData = useAppSelector(selectData)
+  const appDispatch = useAppDispatch()
+
+  const handleModalClose = () => {
+    appDispatch(changeModalShown())
+  }
   const [summaryImmutable, setSummaryImmutable] = useState<CountryEnumerable>()
 
   const summaryReducer = (
@@ -77,7 +91,9 @@ const HomePage: FC<Props> = (props) => {
   return (
     <>
       {isModalOpen ? (
-        <Modal onModalClose={() => setModalOpen(false)}>12342134</Modal>
+        <Modal onModalClose={handleModalClose}>
+          <CountryInspect country={modalData} />
+        </Modal>
       ) : null}
       <div className={style['root']}>
         <header className={style['header']}>
