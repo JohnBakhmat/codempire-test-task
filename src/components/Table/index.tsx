@@ -11,16 +11,15 @@ const Table = (props: Props) => {
   return (
     <table className={style['table']} cellSpacing={50}>
       <thead>
-        <ListItem key={'header'} isHeader data={props.columns} />
+        <tr className={style['head']}>
+          <th>№</th>
+          <th>Country</th>
+          <th>TotalConfirmed</th>
+        </tr>
       </thead>
       <tbody>
         {props.rows.map((element: Country, index: number) => {
-          return (
-            <ListItem
-              key={element.id}
-              data={[index + 1, element.Name, element.TotalConfirmed]}
-            />
-          )
+          return <ListItem key={element.id} country={element} index={index} />
         })}
       </tbody>
     </table>

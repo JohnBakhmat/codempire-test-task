@@ -1,20 +1,25 @@
 import React from 'react'
+import Country from '../../models/Country'
+import { useAppDispatch } from '../../store'
+import { changeModalData, changeShown } from '../../store/modalStore'
 import style from './style.module.sass'
 interface Props {
-  data: Array<string | number>
-  isHeader?: Boolean
+  country: Country
+  index: number
 }
 
-const ListItem = ({ data, isHeader }: Props) => {
+const ListItem = ({ country, index }: Props) => {
+  const dispatch = useAppDispatch()
+  const handleSelect = () => {
+    dispatch(changeModalData(country))
+    dispatch(changeShown())
+  }
+
   return (
-    <tr className={style['table-row']}>
-      {data.map((item) =>
-        isHeader ? (
-          <th key={item.toString()}>{item}</th>
-        ) : (
-          <td key={item.toString()}> {item}</td>
-        )
-      )}
+    <tr className={style['table-row']} onClick={handleSelect}>
+      <td>{index + 1}</td>
+      <td>{country.Name}</td>
+      <td>{country.TotalConfirmed}</td>
     </tr>
   )
 }
