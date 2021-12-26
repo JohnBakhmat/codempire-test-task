@@ -8,8 +8,8 @@ interface ModalStoreType {
 }
 
 const initialState: ModalStoreType = {
-	isShown: true,
-	data: new Country("123", "Albania", 2, 3, 4),
+	isShown: false,
+	data: null,
 }
 
 const modalStore = createSlice({
