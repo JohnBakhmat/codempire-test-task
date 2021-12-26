@@ -53,8 +53,10 @@ const HomePage: FC<Props> = (props) => {
         return data
       }
       case SumaryActionType.Search: {
-        return _.filter(summaryImmutable, (c) =>
-          c.Name.includes(action.payload as string)
+        return _.filter(summaryImmutable, (country) =>
+          country.Name.toLowerCase().includes(
+            (action.payload as string).toLowerCase()
+          )
         )
       }
       case SumaryActionType.Sort: {
