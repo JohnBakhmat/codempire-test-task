@@ -6,7 +6,11 @@ import modalStore from "./modalStore";
 const store = configureStore({
 	reducer: {
 		modal: modalStore
-	}
+	},
+	// Fixing non-serializable warning
+	middleware: (getDefaultMiddleware) => getDefaultMiddleware({
+		serializableCheck: false
+	})
 })
 export type RootState = ReturnType<typeof store.getState>
 export type AppDispatch = typeof store.dispatch
