@@ -6,6 +6,7 @@ import Country from '../../models/Country'
 import { getSummary } from '../../services/api'
 import style from './style.module.sass'
 import * as _ from 'lodash'
+import Modal from '../../components/Modal'
 interface Props {}
 type CountryEnumerable = Array<Country>
 enum SumaryActionType {
@@ -23,7 +24,8 @@ class SumaryAction {
   }
 }
 
-const HomePage: FC = (props: Props) => {
+const HomePage: FC<Props> = (props) => {
+  const [isModalOpen, setModalOpen] = useState(false)
   const [summaryImmutable, setSummaryImmutable] = useState<CountryEnumerable>()
 
   const summaryReducer = (
@@ -73,22 +75,27 @@ const HomePage: FC = (props: Props) => {
     dispatch(new SumaryAction(SumaryActionType.Search, value))
   }
   return (
-    <div className={style['root']}>
-      <header className={style['header']}>
-        <div className={style['covid-group']}>
-          <img
-            className={style['covid-logo']}
-            src={CovidLogo}
-            alt='COVID logo'
-          />
-          <h1 className={style['covid-title']}>Statistic</h1>
+    <>
+      {isModalOpen ? (
+        <Modal onModalClose={() => setModalOpen(false)}>12342134</Modal>
+      ) : null}
+      <div className={style['root']}>
+        <header className={style['header']}>
+          <div className={style['covid-group']}>
+            <img
+              className={style['covid-logo']}
+              src={CovidLogo}
+              alt='COVID logo'
+            />
+            <h1 className={style['covid-title']}>Statistic</h1>
+          </div>
+          <Search placeholder='Search...' onChange={handleSearchChange} />
+        </header>
+        <div>
+          <Table columns={tableColumns} rows={summary} />
         </div>
-        <Search placeholder='Search...' onChange={handleSearchChange} />
-      </header>
-      <div>
-        <Table columns={tableColumns} rows={summary} />
       </div>
-    </div>
+    </>
   )
 }
 
