@@ -1,4 +1,4 @@
-import { FC, ReactEventHandler, useRef } from 'react'
+import { FC, useRef } from 'react'
 import ReactDOM from 'react-dom'
 import style from './style.module.sass'
 interface ModalProps {

@@ -1,4 +1,4 @@
-import React, { ChangeEvent, FC, useEffect, useReducer, useState } from 'react'
+import { ChangeEvent, FC, useEffect, useReducer, useState } from 'react'
 import CovidLogo from '../../assets/logo.png'
 import Search from '../../components/Search'
 import Table from '../../components/Table'
@@ -7,13 +7,13 @@ import { getSummary } from '../../services/api'
 import style from './style.module.sass'
 import * as _ from 'lodash'
 import Modal from '../../components/Modal'
-import { useDispatch, useSelector } from 'react-redux'
+
 import {
   changeModalShown,
   selectData,
   selectIsShow,
 } from '../../store/modalStore'
-import { AppDispatch, useAppDispatch, useAppSelector } from '../../store'
+import { useAppDispatch, useAppSelector } from '../../store'
 import CountryInspect from '../../components/CountryInspect'
 interface Props {}
 type CountryEnumerable = Array<Country>
