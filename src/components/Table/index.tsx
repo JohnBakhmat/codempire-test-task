@@ -1,4 +1,4 @@
-import React, { useEffect, useReducer, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Country from '../../models/Country'
 import ListItem from '../ListItem'
 import style from './style.module.sass'
@@ -55,7 +55,7 @@ const Table = (props: Props) => {
 
   useEffect(() => {
     setRows((): any => _.orderBy(rows, [sortColumn], [sortType]))
-  }, [sortColumn, sortType])
+  }, [sortColumn, sortType]) // eslint-disable-line react-hooks/exhaustive-deps
 
   const tableHeader = [
     new HeaderCell('№', 'null'),
