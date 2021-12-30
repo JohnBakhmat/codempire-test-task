@@ -7,7 +7,7 @@ interface Props {
 
 const Search = (props: Props) => {
   return (
-    <div className={style['search']}>
+    <div className={style['search']} id='search'>
       <input
         type='search'
         className={style['search-input']}
